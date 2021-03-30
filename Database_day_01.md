@@ -42,12 +42,14 @@ Mysql支持多种类型，大致可以分为三类：数值，时间和字符串
 |double|8bytes|()|双精度浮点数|
 ### 时间和日期类型 ###
 |类型|大小|格式|用途|
+| ----   |----   |  ----- | ----- |
 |date|3|YYYY-MM-DD|日期|
 |time|3|HH:MM:SS|时间|
 |datetime|8|YYYY-MM-DD HH:MM:SS|日期与时间|
 |timestamp|4|YYYYMMDD HHMMSS|时间戳|
 ### 字符串类型 ###
 |类型|大小|用途|
+| ----   |----   |  ----- |
 |char|0-255bytes|定长字符串|
 |varchar|0-65536bytes|变长字符串|
 |text|0-65536bytes|长文本数据|
