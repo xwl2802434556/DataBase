@@ -67,11 +67,29 @@ Mysql支持多种类型，大致可以分为三类：数值，时间和字符串
 - where子句的字符串比较不区分大小写，可以使用binary来区分大小写
 ### 更新
 - 语法：`update table_name set filed1=newval, filed2=newval [where condi];`
-- 用于修改表中的记录
+- 用于：修改表中的记录
 ### 删除
 - 语法：`delete from table_name [where condi];`
-- 用于删除表中的记录
+- 用途：用于删除表中的记录
 ### 模糊查询
 - 语法：`select filed1 from table_name where file1 like condi;`
-- like通常与%一起使用，%表示任意字符
+- 用途：用来模糊查询。like通常与%一起使用，%表示任意字符
 
+### Union ###
+- 语法：
+	`select field1 from table1 [where condi]
+	 union [all | distinct]
+	 select field1 from table2 [where condi]
+	`
+- 用途：用于连接两个以上的select语句结果到一个结果(一列)中，重复的数据会被删除。
+### 排序Order by ###
+- 语法：
+	`select filed1 from table1 
+	 order by filed1 [asc | desc], filed2 [asc | desc]`
+- 用途：对需要读取的数据进行排序
+### 分组Group by ###
+- 语法：
+	`select field1, fun(field2) from table1
+	 [where condi] group by field1;`
+- 用途：用于统计一列或多列的性质，通常与函数count, sum, avg使用，比如统计name这一列中姓名出现的次数
+- 例子：select name, count(*) from employee_tb1 group by name;
