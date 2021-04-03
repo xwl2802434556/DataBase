@@ -93,3 +93,43 @@ Mysql支持多种类型，大致可以分为三类：数值，时间和字符串
 	 [where condi] group by field1;`
 - 用途：用于统计一列或多列的性质，通常与函数count, sum, avg使用，比如统计name这一列中姓名出现的次数
 - 例子：select name, count(*) from employee_tb1 group by name;
+### 连接JOIN ###
+- 语法：
+	`select a.id, b.name 
+	 from tbl1 a join tbl2 b on a.id = b.id;`
+- 用于：用于查询多张表中的数据
+	- [inner ]join(内连接，等值连接):获取两张表中字段匹配关系的记录
+	- left join(左连接):获取左表中所有记录，即使右表中没有对应的记录
+	- right join(右连接)
+- 例子：
+	`select a.runoob_id, a.runoob_author, b.runoob_count 
+	from runoob_tbl a join tcount_tbl b on a.runoob_author = b.runoob_author;
+	select a.runoob_id, a.runoob_author, b.runoob_count 
+	from runoob_tbl a,  tcount_tbl b where a.runoob_author = b.runoob_author;`
+### 导入导出.sql文件 ###
+- 导入：source a.sql
+- 导出：mysqldump -u 用户名 -p 数据库名 > 存放位置
+### NULL值处理 ###
+- is null运算符：当列的值为null，返回true
+- is not null：当列的值不为null，返回true
+- ifnull(col1, 0):col1类型为int，如果col1为null，则返回0
+### Mysql正则表达式 ###
+- 语法：`select col1 from tb1 where col regexp '^123$'`
+### Mysql事务 ###
+- 事务满足四个条件：原子性，一致性，隔离性，持久性。
+- 使用：`begin; sql; commit;` `begin; sql; rollback;`
+### ALTER命令 ###
+- 用途：修改数据表名，字段名
+- 例子：
+	- create table testalter_tbl(i int, c char(1));
+	- show columns from testalter_tbl;
+	- alter table testalter_tbl drop i; 删除表中的i字段
+	- alter table testalter_tbl add i int;增加i字段，并定义数据类型,默认放在最后一列
+	- alter table testalter_tbl add a int first;
+	- alter table testalter_tbl add a int after c;
+	- alter table testalter_tbl modify c char(10);修改字段类型
+	- alter table testalter_tbl alter i set default 100;设置默认值
+	- alter table testalter_tbl alter i drop default;删除默认值
+	- ALTER TABLE testalter_tbl ENGINE = MYISAM;修改引擎
+	- SHOW TABLE STATUS LIKE 'testalter_tbl'\G;
+	- ALTER TABLE testalter_tbl RENAME TO alter_tbl;
